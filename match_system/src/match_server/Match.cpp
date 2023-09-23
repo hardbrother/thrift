@@ -414,13 +414,13 @@ uint32_t Match_remove_user_presult::read(::apache::thrift::protocol::TProtocol* 
   return xfer;
 }
 
-int32_t MatchClient::add_user(const user& user, const std::string& info)
+int32_t MatchClient::add_user(const User& user, const std::string& info)
 {
   send_add_user(user, info);
   return recv_add_user();
 }
 
-void MatchClient::send_add_user(const user& user, const std::string& info)
+void MatchClient::send_add_user(const User& user, const std::string& info)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("add_user", ::apache::thrift::protocol::T_CALL, cseqid);
@@ -473,13 +473,13 @@ int32_t MatchClient::recv_add_user()
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "add_user failed: unknown result");
 }
 
-int32_t MatchClient::remove_user(const user& user, const std::string& info)
+int32_t MatchClient::remove_user(const User& user, const std::string& info)
 {
   send_remove_user(user, info);
   return recv_remove_user();
 }
 
-void MatchClient::send_remove_user(const user& user, const std::string& info)
+void MatchClient::send_remove_user(const User& user, const std::string& info)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("remove_user", ::apache::thrift::protocol::T_CALL, cseqid);
@@ -666,13 +666,13 @@ void MatchProcessor::process_remove_user(int32_t seqid, ::apache::thrift::protoc
   return processor;
 }
 
-int32_t MatchConcurrentClient::add_user(const user& user, const std::string& info)
+int32_t MatchConcurrentClient::add_user(const User& user, const std::string& info)
 {
   int32_t seqid = send_add_user(user, info);
   return recv_add_user(seqid);
 }
 
-int32_t MatchConcurrentClient::send_add_user(const user& user, const std::string& info)
+int32_t MatchConcurrentClient::send_add_user(const User& user, const std::string& info)
 {
   int32_t cseqid = this->sync_->generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(this->sync_.get());
@@ -751,13 +751,13 @@ int32_t MatchConcurrentClient::recv_add_user(const int32_t seqid)
   } // end while(true)
 }
 
-int32_t MatchConcurrentClient::remove_user(const user& user, const std::string& info)
+int32_t MatchConcurrentClient::remove_user(const User& user, const std::string& info)
 {
   int32_t seqid = send_remove_user(user, info);
   return recv_remove_user(seqid);
 }
 
-int32_t MatchConcurrentClient::send_remove_user(const user& user, const std::string& info)
+int32_t MatchConcurrentClient::send_remove_user(const User& user, const std::string& info)
 {
   int32_t cseqid = this->sync_->generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(this->sync_.get());

@@ -14,29 +14,29 @@
 namespace match_service {
 
 
-user::~user() noexcept {
+User::~User() noexcept {
 }
 
 
-void user::__set_id(const int32_t val) {
+void User::__set_id(const int32_t val) {
   this->id = val;
 }
 
-void user::__set_name(const std::string& val) {
+void User::__set_name(const std::string& val) {
   this->name = val;
 }
 
-void user::__set_score(const int32_t val) {
+void User::__set_score(const int32_t val) {
   this->score = val;
 }
-std::ostream& operator<<(std::ostream& out, const user& obj)
+std::ostream& operator<<(std::ostream& out, const User& obj)
 {
   obj.printTo(out);
   return out;
 }
 
 
-uint32_t user::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t User::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -93,10 +93,10 @@ uint32_t user::read(::apache::thrift::protocol::TProtocol* iprot) {
   return xfer;
 }
 
-uint32_t user::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t User::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("user");
+  xfer += oprot->writeStructBegin("User");
 
   xfer += oprot->writeFieldBegin("id", ::apache::thrift::protocol::T_I32, 1);
   xfer += oprot->writeI32(this->id);
@@ -115,7 +115,7 @@ uint32_t user::write(::apache::thrift::protocol::TProtocol* oprot) const {
   return xfer;
 }
 
-void swap(user &a, user &b) {
+void swap(User &a, User &b) {
   using ::std::swap;
   swap(a.id, b.id);
   swap(a.name, b.name);
@@ -123,22 +123,22 @@ void swap(user &a, user &b) {
   swap(a.__isset, b.__isset);
 }
 
-user::user(const user& other0) {
+User::User(const User& other0) {
   id = other0.id;
   name = other0.name;
   score = other0.score;
   __isset = other0.__isset;
 }
-user& user::operator=(const user& other1) {
+User& User::operator=(const User& other1) {
   id = other1.id;
   name = other1.name;
   score = other1.score;
   __isset = other1.__isset;
   return *this;
 }
-void user::printTo(std::ostream& out) const {
+void User::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "user(";
+  out << "User(";
   out << "id=" << to_string(id);
   out << ", " << "name=" << to_string(name);
   out << ", " << "score=" << to_string(score);

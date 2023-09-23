@@ -22,8 +22,8 @@ namespace match_service {
 class MatchIf {
  public:
   virtual ~MatchIf() {}
-  virtual int32_t add_user(const user& user, const std::string& info) = 0;
-  virtual int32_t remove_user(const user& user, const std::string& info) = 0;
+  virtual int32_t add_user(const User& user, const std::string& info) = 0;
+  virtual int32_t remove_user(const User& user, const std::string& info) = 0;
 };
 
 class MatchIfFactory {
@@ -53,11 +53,11 @@ class MatchIfSingletonFactory : virtual public MatchIfFactory {
 class MatchNull : virtual public MatchIf {
  public:
   virtual ~MatchNull() {}
-  int32_t add_user(const user& /* user */, const std::string& /* info */) {
+  int32_t add_user(const User& /* user */, const std::string& /* info */) {
     int32_t _return = 0;
     return _return;
   }
-  int32_t remove_user(const user& /* user */, const std::string& /* info */) {
+  int32_t remove_user(const User& /* user */, const std::string& /* info */) {
     int32_t _return = 0;
     return _return;
   }
@@ -78,12 +78,12 @@ class Match_add_user_args {
   }
 
   virtual ~Match_add_user_args() noexcept;
-  user user;
+  User user;
   std::string info;
 
   _Match_add_user_args__isset __isset;
 
-  void __set_user(const user& val);
+  void __set_user(const User& val);
 
   void __set_info(const std::string& val);
 
@@ -112,7 +112,7 @@ class Match_add_user_pargs {
 
 
   virtual ~Match_add_user_pargs() noexcept;
-  const user* user;
+  const User* user;
   const std::string* info;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -189,12 +189,12 @@ class Match_remove_user_args {
   }
 
   virtual ~Match_remove_user_args() noexcept;
-  user user;
+  User user;
   std::string info;
 
   _Match_remove_user_args__isset __isset;
 
-  void __set_user(const user& val);
+  void __set_user(const User& val);
 
   void __set_info(const std::string& val);
 
@@ -223,7 +223,7 @@ class Match_remove_user_pargs {
 
 
   virtual ~Match_remove_user_pargs() noexcept;
-  const user* user;
+  const User* user;
   const std::string* info;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -310,11 +310,11 @@ class MatchClient : virtual public MatchIf {
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  int32_t add_user(const user& user, const std::string& info);
-  void send_add_user(const user& user, const std::string& info);
+  int32_t add_user(const User& user, const std::string& info);
+  void send_add_user(const User& user, const std::string& info);
   int32_t recv_add_user();
-  int32_t remove_user(const user& user, const std::string& info);
-  void send_remove_user(const user& user, const std::string& info);
+  int32_t remove_user(const User& user, const std::string& info);
+  void send_remove_user(const User& user, const std::string& info);
   int32_t recv_remove_user();
  protected:
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
@@ -366,7 +366,7 @@ class MatchMultiface : virtual public MatchIf {
     ifaces_.push_back(iface);
   }
  public:
-  int32_t add_user(const user& user, const std::string& info) {
+  int32_t add_user(const User& user, const std::string& info) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
@@ -375,7 +375,7 @@ class MatchMultiface : virtual public MatchIf {
     return ifaces_[i]->add_user(user, info);
   }
 
-  int32_t remove_user(const user& user, const std::string& info) {
+  int32_t remove_user(const User& user, const std::string& info) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
@@ -416,11 +416,11 @@ class MatchConcurrentClient : virtual public MatchIf {
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  int32_t add_user(const user& user, const std::string& info);
-  int32_t send_add_user(const user& user, const std::string& info);
+  int32_t add_user(const User& user, const std::string& info);
+  int32_t send_add_user(const User& user, const std::string& info);
   int32_t recv_add_user(const int32_t seqid);
-  int32_t remove_user(const user& user, const std::string& info);
-  int32_t send_remove_user(const user& user, const std::string& info);
+  int32_t remove_user(const User& user, const std::string& info);
+  int32_t send_remove_user(const User& user, const std::string& info);
   int32_t recv_remove_user(const int32_t seqid);
  protected:
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;

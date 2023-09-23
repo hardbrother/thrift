@@ -6,6 +6,7 @@
 #include <thrift/server/TSimpleServer.h>
 #include <thrift/transport/TServerSocket.h>
 #include <thrift/transport/TBufferTransports.h>
+#include <iostream>
 
 using namespace ::apache::thrift;
 using namespace ::apache::thrift::protocol;
@@ -13,6 +14,7 @@ using namespace ::apache::thrift::transport;
 using namespace ::apache::thrift::server;
 
 using namespace  ::match_service;
+using namespace std;
 
 class MatchHandler : virtual public MatchIf {
  public:
@@ -20,14 +22,14 @@ class MatchHandler : virtual public MatchIf {
     // Your initialization goes here
   }
 
-  int32_t add_user(const user& user, const std::string& info) {
+  int32_t add_user(const User& user, const std::string& info) {
     // Your implementation goes here
     printf("add_user\n");
 
     return 0;
   }
 
-  int32_t remove_user(const user& user, const std::string& info) {
+  int32_t remove_user(const User& user, const std::string& info) {
     // Your implementation goes here
     printf("remove_user\n");
 
@@ -45,6 +47,8 @@ int main(int argc, char **argv) {
   ::std::shared_ptr<TProtocolFactory> protocolFactory(new TBinaryProtocolFactory());
 
   TSimpleServer server(processor, serverTransport, transportFactory, protocolFactory);
+
+  cout << "start Match Server" << endl;
   server.serve();
   return 0;
 }

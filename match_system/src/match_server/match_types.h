@@ -21,29 +21,29 @@
 
 namespace match_service {
 
-class user;
+class User;
 
-typedef struct _user__isset {
-  _user__isset() : id(false), name(false), score(false) {}
+typedef struct _User__isset {
+  _User__isset() : id(false), name(false), score(false) {}
   bool id :1;
   bool name :1;
   bool score :1;
-} _user__isset;
+} _User__isset;
 
-class user : public virtual ::apache::thrift::TBase {
+class User : public virtual ::apache::thrift::TBase {
  public:
 
-  user(const user&);
-  user& operator=(const user&);
-  user() : id(0), name(), score(0) {
+  User(const User&);
+  User& operator=(const User&);
+  User() : id(0), name(), score(0) {
   }
 
-  virtual ~user() noexcept;
+  virtual ~User() noexcept;
   int32_t id;
   std::string name;
   int32_t score;
 
-  _user__isset __isset;
+  _User__isset __isset;
 
   void __set_id(const int32_t val);
 
@@ -51,7 +51,7 @@ class user : public virtual ::apache::thrift::TBase {
 
   void __set_score(const int32_t val);
 
-  bool operator == (const user & rhs) const
+  bool operator == (const User & rhs) const
   {
     if (!(id == rhs.id))
       return false;
@@ -61,11 +61,11 @@ class user : public virtual ::apache::thrift::TBase {
       return false;
     return true;
   }
-  bool operator != (const user &rhs) const {
+  bool operator != (const User &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const user & ) const;
+  bool operator < (const User & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -73,9 +73,9 @@ class user : public virtual ::apache::thrift::TBase {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(user &a, user &b);
+void swap(User &a, User &b);
 
-std::ostream& operator<<(std::ostream& out, const user& obj);
+std::ostream& operator<<(std::ostream& out, const User& obj);
 
 } // namespace
 
